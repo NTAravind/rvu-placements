@@ -1,0 +1,825 @@
+import { Mail } from "lucide-react";
+
+export function ContactCTA() {
+  return (
+    <section
+      id="contact_us"
+      className="bg-navy py-12 lg:py-20 scroll-mt-20"
+    >
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="text-white">
+            <h2 className="font-heading text-2xl lg:text-3xl font-bold mb-3">
+              Centre for Academic Relations,<br className="hidden lg:block" /> Corporate Engagement &amp; Placements
+            </h2>
+            <p className="text-white/80 text-sm lg:text-base">
+              RV University, #CA-2, 4th Cross, 1st Stage, Mysuru Road, Bengaluru – 560059
+            </p>
+            <a
+              href="mailto:placements@rvu.edu.in"
+              className="inline-flex items-center gap-2 mt-3 text-gold hover:text-gold-hover transition-colors text-sm lg:text-base"
+            >
+              <Mail size={16} />
+              placements@rvu.edu.in
+            </a>
+          </div>
+
+          <a
+            href="https://forms.gle/4cPjVjPosbaw8b9QA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-gold bg-gold px-8 py-3 text-sm font-bold text-white uppercase tracking-wider hover:bg-gold-hover hover:border-gold-hover transition-colors flex-shrink-0"
+          >
+            Recruit Us
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+import Image from "next/image";
+import { Mail, Phone, MapPin } from "lucide-react";
+import { FOOTER, SOCIAL_LINKS } from "@/lib/placements-data";
+
+function SocialIcon({ icon }: { icon: string }) {
+  const paths: Record<string, string> = {
+    facebook:
+      "M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",
+    youtube:
+      "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z",
+    linkedin:
+      "M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z",
+    twitter:
+      "M23 3a10.9 10.9 0 0 1-3.14 1.53A4.48 4.48 0 0 0 22.43.36a9.09 9.09 0 0 1-2.88 1.1A4.52 4.52 0 0 0 12 7.53v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5 0-.28-.03-.56-.08-.83A7.72 7.72 0 0 0 23 3z",
+    instagram:
+      "M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm4.5 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm6-1.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z",
+  };
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-5 w-5"
+    >
+      <path d={paths[icon] || paths.facebook} />
+    </svg>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="bg-navy border-t-[3px] border-gold">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
+          {/* Logo + Contact */}
+          <div className="lg:col-span-3 space-y-4">
+            <Image
+              src="/images/rvu-logo-white.png"
+              alt="RV University"
+              width={200}
+              height={80}
+              className="h-14 w-auto object-contain"
+            />
+            <div className="space-y-2 text-sm text-white/80">
+              <p className="flex items-start gap-2">
+                <MapPin size={16} className="flex-shrink-0 mt-0.5" />
+                {FOOTER.address}
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone size={16} className="flex-shrink-0" />
+                {FOOTER.phone}
+              </p>
+              <div className="space-y-1">
+                <a
+                  href={`mailto:${FOOTER.email}`}
+                  className="flex items-center gap-2 text-gold hover:text-gold-hover transition-colors"
+                >
+                  <Mail size={16} />
+                  {FOOTER.email}
+                </a>
+                <a
+                  href={`mailto:${FOOTER.placementsEmail}`}
+                  className="flex items-center gap-2 text-gold hover:text-gold-hover transition-colors"
+                >
+                  <Mail size={16} />
+                  {FOOTER.placementsEmail}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Link columns */}
+          {FOOTER.columns.map((col) => (
+            <div key={col.title} className="lg:col-span-1">
+              <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-3">
+                {col.title}
+              </h4>
+              <ul className="space-y-2">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-gold transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-white/60">
+            &copy; Copyright 2026, RV University. All rights reserved.
+          </p>
+
+          <div className="flex items-center gap-4">
+            <a href="#" className="text-xs text-white/60 hover:text-gold transition-colors">
+              Privacy Policy
+            </a>
+            <span className="text-white/30">|</span>
+            <a href="#" className="text-xs text-white/60 hover:text-gold transition-colors">
+              Terms &amp; Conditions
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {SOCIAL_LINKS.map((s) => (
+              <a
+                key={s.icon}
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/60 hover:text-gold transition-colors"
+                aria-label={s.icon}
+              >
+                <SocialIcon icon={s.icon} />
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* RV University sub-brand */}
+        <div className="mt-6 flex justify-center">
+          <div className="relative w-48 h-20">
+            <Image
+              src="/images/bg/footer-university.png"
+              alt="RV University"
+              fill
+              className="object-contain opacity-50"
+              sizes="192px"
+            />
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}"use client";
+
+import { ChevronRight } from "lucide-react";
+import { SUBMENU_PILLS, HERO_STATS } from "@/lib/placements-data";
+
+export function HeroBanner() {
+  return (
+    <section>
+      {/* Breadcrumb strip */}
+      <div className="relative h-20 lg:h-24 flex items-center justify-center bg-light bg-cover bg-center"
+           style={{ backgroundImage: "url(/images/bg/inner-bg.jpg)" }}>
+        <h1 className="font-heading text-2xl lg:text-4xl font-bold text-white drop-shadow-lg">
+          Placements
+        </h1>
+      </div>
+
+      {/* Hero banner with text overlay */}
+      <div className="relative bg-cover bg-center min-h-[340px] lg:min-h-[520px] flex items-center">
+        {/* Desktop background */}
+        <div
+          className="absolute inset-0 hidden md:block bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/hero-banner.jpg)" }}
+        />
+        {/* Mobile background */}
+        <div
+          className="absolute inset-0 md:hidden bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/mobile-banner-bg.jpg)" }}
+        />
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto max-w-7xl w-full px-4 py-20 lg:py-40 lg:w-1/2">
+          <p className="text-sm lg:text-base uppercase tracking-wider text-white/80 mb-2">
+            Career Development and Corporate Relations
+          </p>
+          <h2 className="font-heading text-3xl lg:text-5xl font-bold text-white leading-tight mb-4">
+            Empowering Industry Innovators with Top-Tier Talent
+          </h2>
+          <p className="text-base lg:text-lg text-white/90 max-w-lg">
+            Access a multidisciplinary talent pool of 1,600+ industry-ready graduates trained in cutting-edge
+            technologies, design, business, filmmaking, psychology and law.
+          </p>
+        </div>
+      </div>
+
+      {/* Submenu pills */}
+      <div className="bg-light">
+        <div className="mx-auto max-w-7xl flex flex-wrap items-center gap-3 px-4 py-4 lg:px-8">
+          {SUBMENU_PILLS.map((pill) => (
+            <a
+              key={pill.label}
+              href={pill.href}
+              className="inline-flex items-center gap-1 rounded-full border border-gold px-4 py-2 text-xs lg:text-sm font-medium text-navy-dark hover:bg-gold hover:text-white transition-colors"
+            >
+              {pill.label}
+              <ChevronRight size={14} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Stats counters (2x2) + video */}
+      <div className="bg-white">
+        <div className="mx-auto max-w-7xl flex flex-wrap lg:flex-nowrap items-center gap-0">
+          <div className="w-full lg:w-1/2 grid grid-cols-2">
+            {HERO_STATS.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`flex flex-col items-center justify-center py-6 lg:py-8 border-light ${
+                  i % 2 === 0 ? "border-r" : ""
+                } ${i < 2 ? "border-b" : ""}`}
+              >
+                <span className="font-counter text-3xl lg:text-5xl font-bold text-gold counter-shadow">
+                  {stat.number}
+                  {stat.suffix}
+                </span>
+                <span className="text-xs lg:text-sm text-muted-foreground mt-1">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div className="w-full lg:w-1/2 p-4">
+            <div className="relative aspect-video rounded-lg overflow-hidden bg-navy">
+              <iframe
+                src="https://www.youtube.com/embed/oV5zD2mh40A"
+                title="RV University | Placement Office Walkthrough"
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}import { HIGHLIGHTS } from "@/lib/placements-data";
+import Image from "next/image";
+
+export function Highlights() {
+  return (
+    <section className="bg-white py-10 lg:py-14">
+      <div className="mx-auto max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-4 px-4 lg:px-8">
+        {HIGHLIGHTS.map((item) => (
+          <div
+            key={item.title}
+            className="flex items-center gap-3 rounded-xl bg-light p-4"
+          >
+            <Image
+              src={item.icon}
+              alt={item.alt}
+              width={40}
+              height={40}
+              className="h-8 w-8 lg:h-10 lg:w-10 flex-shrink-0"
+            />
+            <span className="text-xs lg:text-sm font-semibold text-navy-dark leading-tight">
+              {item.title}
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+import Image from "next/image";
+import { ExternalLink } from "lucide-react";
+
+export function IndustryCollaboration() {
+  return (
+    <section className="bg-light py-12 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-10">
+          Industry Collaboration
+        </h2>
+
+        <div className="flex flex-col items-center">
+          <div className="w-full max-w-3xl mb-8">
+            <Image
+              src="/images/eco-system.png"
+              alt="RV University Industry Ecosystem"
+              width={800}
+              height={400}
+              className="w-full h-auto"
+            />
+          </div>
+
+          <a
+            href="https://forms.gle/4cPjVjPosbaw8b9QA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3 text-sm font-bold text-white uppercase tracking-wider hover:bg-gold-hover transition-colors"
+          >
+            Recruit Now
+            <ExternalLink size={16} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+
+import Image from "next/image";
+import { INTERNSHIP_CARDS } from "@/lib/placements-data";
+
+export function Internships() {
+  return (
+    <section className="bg-white py-12 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-10">
+          Internships
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {INTERNSHIP_CARDS.map((card) => (
+            <div key={card.title} className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <Image
+                src={card.image}
+                alt={card.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-heading text-lg font-bold text-white mb-0 group-hover:mb-2 transition-all duration-300">
+                  {card.title}
+                </h3>
+                <p className="text-sm text-white/80 max-h-0 overflow-hidden opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-500">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import { Menu, X } from "lucide-react";
+import { MARQUEE_ITEMS, NOTIFICATION_LABEL, NAV_LINKS } from "@/lib/placements-data";
+
+export function PlacementHeader() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white shadow-sm">
+      {/* Notification bar */}
+      <div className="bg-navy overflow-hidden py-2">
+        <div className="mx-auto max-w-7xl flex items-center px-4 lg:px-8">
+          <span className="flex-shrink-0 rounded bg-gold px-2 py-1 text-[11px] font-bold uppercase tracking-wide text-navy-dark mr-4">
+            {NOTIFICATION_LABEL}
+          </span>
+          <div className="overflow-hidden flex-1">
+            <div className="whitespace-nowrap animate-marquee-slow inline-block">
+              {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, i) => (
+                <span key={i} className="inline-block text-sm text-white px-2">
+                  {item.text}
+                  {item.linkText && item.href && (
+                    <a
+                      href={item.href}
+                      target={item.href.startsWith("http") ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="text-gold hover:text-gold-hover underline"
+                    >
+                      {" "}
+                      {item.linkText}
+                    </a>
+                  )}
+                  {item.suffix}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main nav */}
+      <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 lg:px-8">
+        <a href="https://rvu.edu.in" className="flex-shrink-0">
+          <Image
+            src="/images/rvu-logo.svg"
+            alt="RV University"
+            width={140}
+            height={56}
+            className="h-10 w-auto lg:h-12"
+            priority
+          />
+        </a>
+
+        <nav className="hidden lg:flex items-center gap-1">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                link.active
+                  ? "text-gold font-semibold"
+                  : "text-navy-dark hover:text-gold"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+
+        <button
+          className="lg:hidden p-2 text-navy-dark"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      <div
+        className={`lg:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-transform duration-300 ${
+          menuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <nav className="flex flex-col py-2">
+          {NAV_LINKS.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className={`px-6 py-3 text-sm font-medium border-b border-light ${
+                link.active ? "text-gold font-semibold" : "text-navy-dark hover:bg-light"
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </header>
+  );
+}import Image from "next/image";
+import {
+  PLACEMENT_PERFORMANCE,
+  PLACEMENT_PERFORMANCE_COUNTERS,
+  RECRUITER_CATEGORIES,
+} from "@/lib/placements-data";
+
+export function PlacementPerformance() {
+  return (
+    <section id="explore_placements" className="bg-white py-12 lg:py-20 scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        {/* Placements heading + narrative */}
+        <div className="mb-12">
+          <h3 className="font-heading text-2xl lg:text-3xl font-bold text-navy-dark mb-4">
+            {PLACEMENT_PERFORMANCE.heading}
+          </h3>
+          <p className="text-muted-foreground max-w-4xl leading-relaxed">
+            {PLACEMENT_PERFORMANCE.narrative}
+          </p>
+        </div>
+
+        {/* Performance counters */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+          {PLACEMENT_PERFORMANCE_COUNTERS.map((counter) => (
+            <div
+              key={counter.title}
+              className="flex flex-col items-center text-center bg-light rounded-xl p-6"
+            >
+              <span className="font-counter text-4xl lg:text-5xl font-bold text-gold counter-shadow">
+                {counter.value}
+                {counter.suffix}
+              </span>
+              <span className="text-sm text-muted-foreground mt-2">{counter.title}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Salary distribution */}
+        <div className="mb-12">
+          <h4 className="font-heading text-xl lg:text-2xl font-bold text-navy-dark text-center mb-6">
+            Salary distribution by offer
+          </h4>
+          <div className="max-w-4xl mx-auto">
+            <Image
+              src="/images/salary-distribution.jpg"
+              alt="Salary distribution by offer"
+              width={1618}
+              height={726}
+              className="w-full h-auto rounded-xl shadow-sm"
+            />
+          </div>
+        </div>
+
+        {/* Recruiter categories */}
+        <div>
+          <h4 className="font-heading text-xl lg:text-2xl font-bold text-navy-dark text-center mb-6">
+            Recruiter categories
+          </h4>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+            {RECRUITER_CATEGORIES.map((cat) => (
+              <div
+                key={cat.title}
+                className="flex flex-col items-center text-center bg-light rounded-xl p-5"
+              >
+                <div className="relative w-16 h-16 mb-3">
+                  <Image
+                    src={cat.image}
+                    alt={cat.title}
+                    fill
+                    className="object-contain"
+                    sizes="64px"
+                  />
+                </div>
+                <span className="text-sm font-semibold text-navy-dark">{cat.title}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}import Image from "next/image";
+
+export function PlacementProcess() {
+  return (
+    <section className="bg-white py-12 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-10">
+          Placement Process
+        </h2>
+
+        {/* Desktop image */}
+        <div className="hidden md:block">
+          <Image
+            src="/images/placement-process.png"
+            alt="Placement Process"
+            width={1200}
+            height={400}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+
+        {/* Mobile tall image */}
+        <div className="md:hidden">
+          <Image
+            src="/images/placement-process-detail.png"
+            alt="Placement Process"
+            width={600}
+            height={1200}
+            className="w-full h-auto"
+            priority
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+export function RecruiterStrip() {
+  return (
+    <section
+      className="lg:hidden py-24 bg-cover bg-center"
+      style={{ backgroundImage: "url(/images/bg/studentvoices-bg.jpg)" }}
+    >
+      <div className="mx-auto max-w-7xl px-4">
+        <h2 className="font-heading text-4xl font-bold text-white text-center">
+          Recruiter
+        </h2>
+      </div>
+    </section>
+  );
+}
+import Image from "next/image";
+import { RECRUITER_LOGOS } from "@/lib/placements-data";
+
+export function Recruiters() {
+  return (
+    <section className="bg-light py-12 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-10">
+          Recruiters
+        </h2>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 lg:gap-8 items-center">
+          {RECRUITER_LOGOS.map((logo) => (
+            <div key={logo.src} className="flex items-center justify-center p-4 bg-white rounded-xl shadow-sm">
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={160}
+                height={60}
+                className="h-10 lg:h-14 w-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import { RULES_SECTIONS } from "@/lib/placements-data";
+
+export function RulesRegulations() {
+  return (
+    <section id="policies" className="bg-light py-12 lg:py-20 scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-10">
+          Rules &amp; Regulations
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {RULES_SECTIONS.map((section) => (
+            <div key={section.title} className="bg-white rounded-xl p-5 lg:p-6 shadow-sm">
+              <h3 className="font-heading text-xl font-bold text-navy-dark mb-3 pb-2 border-b-2 border-gold">
+                {section.title}
+              </h3>
+              {section.intro && (
+                <p className="text-sm font-semibold text-navy-dark mb-3">
+                  {section.intro}
+                </p>
+              )}
+              <ul className="list-disc pl-5 space-y-2">
+                {section.items.map((item, i) => (
+                  <li key={i} className="text-sm text-muted-foreground leading-relaxed">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              {section.footnote && (
+                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                  {section.footnote}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}"use client";
+
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { SCHOOL_DATA, TOTAL_STUDENTS } from "@/lib/placements-data";
+
+export function SchoolsEligible() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  return (
+    <section id="schools_eligible" className="bg-white py-12 lg:py-20 scroll-mt-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-4">
+          Schools Eligible for Recruitment
+        </h2>
+        <p className="text-center text-muted-foreground mb-8">
+          <span className="font-counter text-2xl lg:text-3xl font-bold text-gold counter-shadow">
+            {TOTAL_STUDENTS.toLocaleString()}
+          </span>{" "}
+          <span className="text-sm lg:text-base">Total Students Eligible for Recruitment</span>
+        </p>
+
+        <div className="space-y-3 max-w-4xl mx-auto">
+          {SCHOOL_DATA.map((school, idx) => (
+            <div key={school.abbr} className="border border-light rounded-xl overflow-hidden">
+              <button
+                onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                className="w-full flex items-center justify-between px-5 py-4 bg-light hover:bg-light/70 transition-colors"
+              >
+                <span className="text-sm lg:text-base font-semibold text-navy-dark text-left">
+                  {school.name}
+                </span>
+                <ChevronDown
+                  size={20}
+                  className={`text-gold flex-shrink-0 transition-transform duration-300 ${
+                    openIndex === idx ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === idx ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-light">
+                      <th className="px-5 py-3 text-left font-semibold text-navy-dark bg-gold/10">
+                        Course
+                      </th>
+                      <th className="px-5 py-3 text-right font-semibold text-navy-dark bg-gold/10">
+                        Strength
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {school.programs.map((prog) => (
+                      <tr key={prog.course} className="border-b border-light/60">
+                        <td className="px-5 py-3 text-navy-dark">{prog.course}</td>
+                        <td className="px-5 py-3 text-right font-medium text-navy-dark">
+                          {prog.strength}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                  <tfoot>
+                    <tr className="bg-gold/5">
+                      <td className="px-5 py-3 font-bold text-navy-dark">Total</td>
+                      <td className="px-5 py-3 text-right font-bold text-gold">
+                        {school.total}
+                      </td>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+"use client";
+
+import Image from "next/image";
+import { WHY_RECRUIT_CARDS } from "@/lib/placements-data";
+
+export function WhyRecruit() {
+  return (
+    <section className="bg-light py-12 lg:py-20">
+      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+        <h2 className="font-heading text-3xl lg:text-4xl font-bold text-navy-dark text-center mb-2">
+          Why Recruit at RV University?
+        </h2>
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          We bridge the gap between academia and industry with well-rounded graduates ready to make an impact from day one.
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {WHY_RECRUIT_CARDS.map((card) => (
+            <div key={card.title} className="group relative rounded-2xl overflow-hidden aspect-[4/3]">
+              <Image
+                src={card.image}
+                alt={card.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              />
+              {/* Dark gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              {/* Title always visible */}
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <h3 className="font-heading text-lg font-bold text-white mb-0 group-hover:mb-2 transition-all duration-300">
+                  {card.title}
+                </h3>
+                {/* Description appears on hover */}
+                <p className="text-sm text-white/80 max-h-0 overflow-hidden opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-500">
+                  {card.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+export { PlacementHeader } from "./PlacementHeader";
+export { HeroBanner } from "./HeroBanner";
+export { Highlights } from "./Highlights";
+export { WhyRecruit } from "./WhyRecruit";
+export { PlacementProcess } from "./PlacementProcess";
+export { Recruiters } from "./Recruiters";
+export { Internships } from "./Internships";
+export { IndustryCollaboration } from "./IndustryCollaboration";
+export { RecruiterStrip } from "./RecruiterStrip";
+export { SchoolsEligible } from "./SchoolsEligible";
+export { RulesRegulations } from "./RulesRegulations";
+export { PlacementPerformance } from "./PlacementPerformance";
+export { ContactCTA } from "./ContactCTA";
+export { Footer } from "./Footer";
