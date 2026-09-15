@@ -2,9 +2,6 @@ import Image from "next/image";
 import { INTERNSHIPS } from "@/lib/placements-data";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
-import { buttonVariants } from "@/lib/button-variants";
-import { cn } from "cn";
-import { ArrowUpRight } from "lucide-react";
 
 const COLLAGE = [
   {
@@ -78,18 +75,6 @@ export function Internships() {
               </li>
             ))}
           </ol>
-
-          <Reveal delay={80}>
-            <a
-              href="https://forms.gle/4cPjVjPosbaw8b9QA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ variant: "gold", size: "lg" }), "mt-10")}
-            >
-              Recruit Now
-              <ArrowUpRight className="size-4" />
-            </a>
-          </Reveal>
         </div>
       </div>
     </section>

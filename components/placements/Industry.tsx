@@ -2,9 +2,6 @@ import Image from "next/image";
 import { INDUSTRY } from "@/lib/placements-data";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
-import { buttonVariants } from "@/lib/button-variants";
-import { cn } from "cn";
-import { ArrowUpRight } from "lucide-react";
 
 export function Industry() {
   return (
@@ -41,20 +38,10 @@ export function Industry() {
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
                       {step.body}
                     </p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <a
-              href={INDUSTRY.cta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-8")}
-            >
-              {INDUSTRY.cta.label}
-              <ArrowUpRight className="size-4" />
-            </a>
+</div>
+            </li>
+          ))}
+        </ol>
           </div>
 
           <div className="lg:col-span-7">

@@ -138,19 +138,6 @@ export function Navigation() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a
-              href={BRAND.recruitUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "gold", size: "sm" }),
-                "hidden font-ui uppercase tracking-[0.12em] sm:inline-flex"
-              )}
-            >
-              Recruit with RVU
-              <ArrowUpRight className="size-3.5" />
-            </a>
-
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger
                 aria-label="Open menu"

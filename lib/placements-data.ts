@@ -86,22 +86,22 @@ export const HERO_STATS = [
 
 export const HIGHLIGHTS = [
   {
-    icon: "/icons/international_icon1.png",
+    icon: "Globe2",
     title: "International offers",
     body: "Placement offers from firms across the US, Europe and beyond.",
   },
   {
-    icon: "/icons/international_icon2.png",
+    icon: "Layers",
     title: "Varied internship partners",
     body: "250+ organisations provide internships, live projects and industry mentoring.",
   },
   {
-    icon: "/icons/international_icon3.png",
+    icon: "Trophy",
     title: "Fortune 500 recruiters",
     body: "Global capability centres and Fortune 500 companies hire from RVU.",
   },
   {
-    icon: "/icons/international_icon4.png",
+    icon: "Users",
     title: "Robust alumni network",
     body: "A growing community of alumni across technology, business and policy.",
   },
@@ -122,12 +122,12 @@ export const RECRUITER_LOGOS = Array.from({ length: 16 }, (_, i) => ({
 }));
 
 export const RECRUITER_CATEGORIES = [
-  { label: "MNCs", icon: "/images/recruiter-category-1.png" },
-  { label: "GCCs", icon: "/images/recruiter-category-2.png" },
-  { label: "Tech", icon: "/images/recruiter-category-3.png" },
-  { label: "Consulting", icon: "/images/recruiter-category-4.png" },
-  { label: "Financial", icon: "/images/recruiter-category-5.png" },
-  { label: "Startups", icon: "/images/recruiter-category-6.png" },
+  { label: "MNCs", icon: "Globe" },
+  { label: "GCCs", icon: "Building2" },
+  { label: "Tech", icon: "Cpu" },
+  { label: "Consulting", icon: "Lightbulb" },
+  { label: "Financial", icon: "Landmark" },
+  { label: "Startups", icon: "Rocket" },
 ];
 
 /* ------------------------------ Why RVU ----------------------------- */
@@ -384,7 +384,6 @@ export const INDUSTRY = {
     src: "/images/eco-system.png",
     alt: "RV University industry engagement ecosystem",
   },
-  cta: { label: "Recruit Now", href: "https://forms.gle/4cPjVjPosbaw8b9QA" },
 };
 
 /* ------------------------------ Outcomes ----------------------------- */
@@ -404,14 +403,16 @@ export const OUTCOMES = {
     note: "Aviatrix · ₹33 LPA offered by the same organisation",
   },
   bands: [
-    { range: "₹40L – ₹43.5L", offers: "1–2 offers", count: 1.5, width: 2 },
-    { range: "₹20L – ₹33L", offers: "~20 offers", count: 20, width: 24 },
-    { range: "₹10L – ₹20L", offers: "40–50 offers", count: 45, width: 53 },
-    { range: "₹4L – ₹10L", offers: "80–90 offers", count: 85, width: 100 },
+    { range: "₹40L – ₹43.5L", offers: "1–2 offers", count: 1.5 },
+    { range: "₹20L – ₹33L", offers: "~20 offers", count: 20 },
+    { range: "₹10L – ₹20L", offers: "40–50 offers", count: 45 },
+    { range: "₹4L – ₹10L", offers: "80–90 offers", count: 85 },
   ],
-  salaryImage: {
-    src: "/images/salary-distribution.jpg",
-    alt: "Salary distribution of placement offers across compensation bands",
+  chart: {
+    eyebrow: "Salary distribution by offer",
+    axis: "Compensation band (₹ LPA)",
+    footnote:
+      "Bar length is proportional to the number of offers secured in each compensation band — from the ₹4 LPA minimum campus compensation to the ₹43.5 LPA highest package.",
   },
   counters: [
     { value: 25, suffix: "%", prefix: "", label: "of placed students received multiple offers" },
@@ -423,13 +424,23 @@ export const OUTCOMES = {
 /* -------------------------------- CTA -------------------------------- */
 
 export const CTA = {
-  eyebrow: "Recruit with RVU",
+  eyebrow: "Contact the CAR Office",
+  kicker: "Recruit with RVU",
   headline: "Ready to build your next team?",
-  body: "Connect with a multidisciplinary talent pool of 1,600+ industry-ready graduates. Tell us what you're hiring for — we'll do the rest.",
+  body: "Connect with a multidisciplinary talent pool of 1,600+ industry-ready graduates. Tell us what you're hiring for — we'll arrange the campus drive, the interviews and the offers.",
   button: "Recruit with RVU",
   recruitUrl: "https://forms.gle/4cPjVjPosbaw8b9QA",
+  formNote:
+    "Prefer email? Send your requirements to placements@rvu.edu.in and we'll respond within one business day.",
   office:
     "Corporate & Alumni Relations Office, RV University, 5th Floor, D Block, RV Vidyanikethan Post, 8th Mile, Mysuru Road, Bengaluru – 560 059",
+};
+
+export const MID_PAGE_CTA = {
+  eyebrow: "Hire from RVU",
+  text: "Talent that ships on day one — 1,600+ industry-ready graduates across six schools.",
+  button: "Recruit with RVU",
+  href: "https://forms.gle/4cPjVjPosbaw8b9QA",
 };
 
 /* ------------------------------- Footer ------------------------------ */
@@ -511,23 +522,6 @@ export const FOOTER = {
     { label: "Terms & Conditions", href: "https://rvu.edu.in/terms-conditions/" },
   ],
   copyright: `© ${new Date().getFullYear()}, rvu.edu.in . All rights reserved.`,
-};
-
-/* ------------------------------- Contact ----------------------------- */
-
-export const CONTACT = {
-  eyebrow: "Get in touch",
-  headline: "Contact the CAR Office",
-  body: "Whether you are planning a campus drive, pitching an internship or just exploring the RVU talent pool — start the conversation here.",
-  email: "placements@rvu.edu.in",
-  phone: "+91 89511 79896",
-  address: [
-    "Corporate & Alumni Relations (CAR) Office,",
-    "RV University, 5th Floor, D Block,",
-    "RV Vidyanikethan Post, 8th Mile, Mysuru Road,",
-    "Bengaluru – 560 059",
-  ],
-  cta: { label: "Recruit with RVU", href: "https://forms.gle/4cPjVjPosbaw8b9QA" },
 };
 
 export const SOCIAL_LINKS = [

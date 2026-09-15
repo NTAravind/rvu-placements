@@ -84,7 +84,7 @@ export function Hero() {
                   </p>
 
                   <div className="mt-1 flex items-baseline gap-2">
-                    <span className="display-num text-4xl text-gold">
+                    <span className="display-num text-5xl text-gold lg:text-6xl">
                       {HERO.eligible.value}
                     </span>
 
@@ -118,17 +118,11 @@ export function Hero() {
 
                 <a
                   href={HERO.secondaryCta.href}
-                  className={cn(
-                    buttonVariants({
-                      variant: "outline",
-                      size: "lg",
-                    }),
-                    "group min-h-12 px-6 transition-all duration-300 hover:-translate-y-0.5"
-                  )}
+                  className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-navy/15 px-5 font-ui text-sm font-semibold uppercase tracking-[0.16em] text-muted-foreground transition-colors duration-300 hover:border-gold hover:text-navy"
                 >
                   {HERO.secondaryCta.label}
 
-                  <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  <ArrowRight className="size-4 shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
                 </a>
               </div>
             </Reveal>
@@ -141,7 +135,7 @@ export function Hero() {
                 </p>
 
                 <div className="mt-1 flex items-baseline gap-3">
-                  <span className="display-num text-4xl text-gold">
+                  <span className="display-num text-5xl text-gold">
                     {HERO.eligible.value}
                   </span>
 
@@ -214,7 +208,7 @@ export function Hero() {
                 {HERO.featuredStat.label}
               </p>
 
-              <p className="display-num mt-1 text-[2.8rem] leading-none text-white sm:text-[3.2rem]">
+              <p className="display-num mt-1 text-[3.4rem] leading-none text-white sm:text-[4rem]">
                 {HERO.featuredStat.value}
               </p>
 

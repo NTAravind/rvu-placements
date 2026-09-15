@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { GOVERNANCE, PROCESS } from "@/lib/placements-data";
 import { Reveal } from "./Reveal";
 import { SectionHeader } from "./SectionHeader";
@@ -32,6 +32,49 @@ function ProcessTimeline() {
   );
 }
 
+function ReferencePolicies() {
+  return (
+    <div className="border-y border-line bg-cream-deep/50">
+      <div className="page-grid">
+        <details className="group">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 outline-none [&::-webkit-details-marker]:hidden">
+            <span className="flex items-center gap-3">
+              <span className="eyebrow !text-muted-foreground">
+                For reference
+              </span>
+              <span className="font-ui text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Placement Governance &amp; Student Eligibility
+              </span>
+            </span>
+            <ChevronDown
+              className="size-4 shrink-0 text-muted-foreground transition-transform duration-300 group-open:rotate-180"
+              aria-hidden="true"
+            />
+          </summary>
+
+          <div className="grid grid-cols-1 gap-x-10 gap-y-6 pb-7 sm:grid-cols-2">
+            {GOVERNANCE.map((section) => (
+              <div key={section.title} className="border-l-2 border-line pl-4">
+                <h3 className="font-heading text-sm font-semibold text-navy/80">
+                  {section.title}
+                </h3>
+                <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                  {section.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <p className="pb-7 font-ui text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
+            Policies are reproduced for reference from the University placement
+            charter.
+          </p>
+        </details>
+      </div>
+    </div>
+  );
+}
+
 export function Process() {
   return (
     <section id="process" className="scroll-mt-24 bg-white">
@@ -52,42 +95,8 @@ export function Process() {
           <hr className="my-16 h-px w-full border-0 bg-line lg:my-20" />
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-4">
-            <Reveal>
-              <SectionHeader
-                eyebrow="Placement governance"
-                title="One coordinating body. One process."
-                body="Corporate & Alumni Relations (CAR) coordinates placements and internships across every school."
-                titleClassName="text-2xl sm:text-3xl lg:text-[2rem]"
-              />
-            </Reveal>
-          </div>
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2">
-              {GOVERNANCE.map((section, i) => (
-                <Reveal key={section.title} delay={(i % 2) * 70}>
-                  <div className="border-t border-gold pt-5">
-                    <h3 className="font-heading text-lg font-semibold text-heading">
-                      {section.title}
-                    </h3>
-                    <div className="mt-4 space-y-3 text-sm leading-relaxed text-navy">
-                      {section.body.split(". ").filter(Boolean).map((sentence) => (
-                        <p key={sentence} className="flex items-start gap-3">
-                          <Check className="mt-0.5 size-4 shrink-0 text-gold" />
-                          <span>{sentence}.</span>
-                        </p>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-
         <Reveal delay={100}>
-          <div className="relative mt-16 w-full overflow-hidden bg-navy">
+          <div className="relative w-full overflow-hidden bg-navy">
             <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
               <iframe
                 src={PROCESS.video.src}
@@ -101,6 +110,10 @@ export function Process() {
           </div>
         </Reveal>
       </div>
+
+      <Reveal delay={80}>
+        <ReferencePolicies />
+      </Reveal>
     </section>
   );
 }

@@ -9,6 +9,6 @@ export { Process } from "./Process";
 export { Internships } from "./Internships";
 export { Industry } from "./Industry";
 export { Outcomes } from "./Outcomes";
+export { MidPageCTA } from "./MidPageCTA";
 export { CTA } from "./CTA";
-export { Contact } from "./Contact";
 export { Footer } from "./Footer";

@@ -1,11 +1,11 @@
 import {
   CTA,
-  Contact,
   Footer,
   Hero,
   Highlights,
   Industry,
   Internships,
+  MidPageCTA,
   Navigation,
   Outcomes,
   Process,
@@ -30,8 +30,8 @@ export default function PlacementsPage() {
         <Internships />
         <Industry />
         <Outcomes />
+        <MidPageCTA />
         <CTA />
-        <Contact />
       </main>
       <Footer />
     </>

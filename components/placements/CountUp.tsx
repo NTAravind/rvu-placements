@@ -9,11 +9,18 @@ function format(n: number, target: number) {
   return n.toFixed(1);
 }
 
+/**
+ * Count-up number. Starts from 0 and eases to `value` once the element enters
+ * the viewport. Robust against observers that never fire:
+ *  - starts immediately if the element is already on screen at mount,
+ *  - snaps straight to the value under `prefers-reduced-motion`,
+ *  - has a time-based fail-safe so the real number is always shown.
+ */
 export function CountUp({
   value,
   prefix = "",
   suffix = "",
-  duration = 1400,
+  duration = 1600,
   className = "",
 }: {
   value: number;
@@ -24,22 +31,20 @@ export function CountUp({
 }) {
   const ref = useRef<HTMLSpanElement>(null);
   const [display, setDisplay] = useState(0);
-  const started = useRef(false);
+  const animated = useRef(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node) return;
 
-    const run = () => {
-      if (started.current) return;
-      started.current = true;
-      const prefersReduced = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-      if (prefersReduced) {
-        setDisplay(value);
-        return;
-      }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const raf = requestAnimationFrame(() => setDisplay(value));
+      return () => cancelAnimationFrame(raf);
+    }
+
+    const animate = () => {
+      if (animated.current) return;
+      animated.current = true;
       const t0 = performance.now();
       const tick = (now: number) => {
         const p = Math.min((now - t0) / duration, 1);
@@ -50,23 +55,36 @@ export function CountUp({
       requestAnimationFrame(tick);
     };
 
-    if (!("IntersectionObserver" in window)) {
-      const raf = requestAnimationFrame(run);
+    const rect = node.getBoundingClientRect();
+    const inView =
+      rect.top <= window.innerHeight * 1.05 && rect.bottom >= 0 && rect.height > 0;
+
+    if (!("IntersectionObserver" in window) || inView) {
+      // Double-rAF so the initial "0" paints once and the count-up stays visible.
+      const raf = requestAnimationFrame(() => requestAnimationFrame(animate));
       return () => cancelAnimationFrame(raf);
     }
+
     const io = new IntersectionObserver(
-      (entries) => {
+      (entries) =>
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            run();
+            animate();
             io.disconnect();
           }
-        });
-      },
-      { threshold: 0.4 }
+        }),
+      { threshold: 0 }
     );
     io.observe(node);
-    return () => io.disconnect();
+
+    // Fail-safe: force the final value if the observer never fires
+    // (hidden ancestor, throttled tab, etc.).
+    const failsafe = window.setTimeout(animate, Math.max(duration, 3200));
+
+    return () => {
+      io.disconnect();
+      window.clearTimeout(failsafe);
+    };
   }, [value, duration]);
 
   return (

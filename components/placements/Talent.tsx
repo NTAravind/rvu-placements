@@ -38,6 +38,7 @@ export function Talent() {
         <Reveal delay={100}>
           <Accordion
             defaultValue={[SCHOOLS[0].abbr]}
+            keepMounted
             className="mt-12 border-t border-line"
           >
             {SCHOOLS.map((school) => (
